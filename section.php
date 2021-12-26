@@ -74,6 +74,7 @@ $sections = mysqli_query($mysqli, "SELECT *
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <select class="form-control">
                                                     <option selected value="0">Kindergarten</option>
+                                                    <option selected value="-1">Prepatory</option>
                                                 </select>
                                                     <!-- <input type="number" min="1" max="12" class="form-control" name="grade" required> -->
                                                 </div>
@@ -129,7 +130,7 @@ $sections = mysqli_query($mysqli, "SELECT *
                                         <?php while ($section = mysqli_fetch_array($sections)) {
                                         ?>
                                             <tr>
-                                                <td><?php if($section["grade"]=='0'){ echo "Kindergarten";} ?></td>
+                                                <td><?php if($section["grade"]=='0'){ echo "Kindergarten";}else if($section["grade"]=='-1'){ echo "Prepatory";} ?></td>
                                                 <td><a href="class.php?section=<?php echo $section["id"]; ?>"><?php echo $section["section"];  ?></a></td>
                                                 <td>
                                                     <!-- Edit-->

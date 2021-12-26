@@ -125,7 +125,7 @@ WHERE section_id = '$class' ");
                                         <tr>
                                             <td>Student Name</td>
                                             <td>Subject</td>
-                                            <td>Returned</td>
+                                            <td>Score</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -137,11 +137,12 @@ WHERE section_id = '$class' ");
                                             <tr>
                                                 <td><?php echo $class['firstname'] . ' ' . $class['lastname']; ?></td>
                                                 <td><?php echo ucfirst($class['code']); ?></td>
-                                                <td><?php if($returned){ ?>
+                                                <td><?php echo ucfirst($class['returned']); ?></td>
+                                                <!-- <td><?php if($returned){ ?>
                                                     <span class="badge bg-success text-white">Returned</span>
                                                 <?php }else{ ?>
                                                     <span class="badge bg-warning text-white">Pending</span>
-                                                <?php } ?></td>
+                                                <?php } ?></td> -->
                                             </tr>
                                         <?php } ?>
                                     </tbody>
