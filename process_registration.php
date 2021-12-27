@@ -36,6 +36,7 @@
         }
     }
 
+    //Register Account
     if(isset($_POST['register_account'])){
         $role = $_POST['role'];
         $fname = ucfirst($_POST['fname']);
@@ -57,6 +58,35 @@
 
             $_SESSION['loginError'] = "User Account Creation Successful!";
             header("location: login.php");
+        }
+    }
+
+    //Login using unity
+    if(isset($_GET['login_game'])){
+        $email = strtolower($_GET['email']);
+        $password = $_GET['password'];
+
+        $checkUser = $mysqli->query("SELECT * FROM users WHERE email='$email' ");
+
+        if(mysqli_num_rows($checkUser) <= 0){
+            $_SESSION['loginError'] = "Email not found. Please try again.";
+            header("location: login.php?email=".$email);
+        }
+        else{
+            $newCheckUser = $checkUser->fetch_array();
+            $hashPassword = $newCheckUser['password'];
+            $verify = password_verify($password, $hashPassword);
+            if ($verify){
+                if($newCheckUser["validated"]==0){
+                    echo 'not_validated';
+                }
+                else{
+                    echo $newCheckUser["id"];
+                }
+
+            } else {
+                echo 'incorrect_credentials';
+            }
         }
     }
 
