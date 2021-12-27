@@ -35,6 +35,11 @@
     }
 
     if(isset($_GET['publish_score'])){
-        echo 'publish score here!';
+        $user_id = $_GET['user_id'];
+        $subject = $_GET['subject'];
+        $subject = $_GET['subject'];
+        $score = $_GET['score'];
+        
+        echo 'publish score here! ';
     }
 ?>
