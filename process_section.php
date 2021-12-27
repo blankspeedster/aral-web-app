@@ -39,7 +39,7 @@
         $subject = $_GET['subject'];
         $subject = $_GET['subject'];
         $score = $_GET['score'];
-        
-        echo 'publish score here! ';
+
+        echo 'publish score here! user: '.$user_id.', subject: '.$subject.', score: '.$score;
     }
 ?>
