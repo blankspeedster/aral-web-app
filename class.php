@@ -14,7 +14,7 @@ if (isset($_GET['section'])) {
 } else {
     header("location: section.php");
 }
-$classes = mysqli_query($mysqli, "SELECT c.returned, s.code, u.firstname, u.lastname FROM class c
+$classes = mysqli_query($mysqli, "SELECT c.score, s.code, u.firstname, u.lastname FROM class c
 JOIN subjects s
 ON c.subject_id = s.id
 JOIN users u
@@ -132,12 +132,12 @@ WHERE section_id = '$class' ");
                                         <?php
                                         $returned = false;
                                         while ($class = mysqli_fetch_array($classes)) {
-                                            $returned = boolval($class["returned"]);
+                                            // $returned = boolval($class["returned"]);
                                         ?>
                                             <tr>
                                                 <td><?php echo $class['firstname'] . ' ' . $class['lastname']; ?></td>
                                                 <td><?php echo ucfirst($class['code']); ?></td>
-                                                <td><?php echo ucfirst($class['returned']); ?></td>
+                                                <td><?php echo ucfirst($class['score']); ?></td>
                                                 <!-- <td><?php if($returned){ ?>
                                                     <span class="badge bg-success text-white">Returned</span>
                                                 <?php }else{ ?>

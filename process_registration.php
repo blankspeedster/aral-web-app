@@ -70,7 +70,7 @@
 
         if(mysqli_num_rows($checkUser) <= 0){
             $_SESSION['loginError'] = "Email not found. Please try again.";
-            header("location: login.php?email=".$email);
+            echo 'email_not_found';
         }
         else{
             $newCheckUser = $checkUser->fetch_array();

@@ -35,7 +35,7 @@
         $email = strtolower($_POST['email']);
         $phone_number = strtolower($_POST['phone_number']);
 
-        $mysqli->query("UPDATE users SET firstname = '$fname', lastname = '$lname', email = '$email', phone_number = '$phone_number' WHERE id = '$user_id' ") or die ($mysqli->error());
+        $mysqli->query("UPDATE users SET firstname = '$fname', lastname = '$lname', email = '$email', phone_number = '$phone_number' WHERE id = '$user_id' ") or die ($mysqli->error);
         $_SESSION['message'] = "Record has been updated!";
         $_SESSION['msg_type'] = "info";
         header("location: users.php");
@@ -43,7 +43,7 @@
 
     if(isset($_GET['validate'])){
         $user_id = $_GET['validate'];
-        $mysqli->query("UPDATE users SET validated = '1' WHERE id = '$user_id' ") or die ($mysqli->error());
+        $mysqli->query("UPDATE users SET validated = '1' WHERE id = '$user_id' ") or die ($mysqli->error);
 
         $_SESSION['message'] = "User has been validated!";
         $_SESSION['msg_type'] = "success";
