@@ -33,4 +33,8 @@
         $_SESSION['msg_type'] = "success";
         header("location: class.php?section=".$section_id);
     }
+
+    if(isset($_GET['publish_score'])){
+        echo 'publish score here!';
+    }
 ?>
