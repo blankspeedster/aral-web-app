@@ -47,6 +47,7 @@
 
     if(isset($_GET['score_board'])){
         $user_id = $_GET['userId'];
+        $subject_id = $_GET['score_board'];
         $checkSection = $mysqli->query("SELECT * FROM class c WHERE c.user_id = '$user_id'");
         $newSection = $checkSection->fetch_array();
         $section_id = $newSection['section_id'];
@@ -56,6 +57,7 @@
         JOIN users u
         ON u.id = c.user_id
         WHERE c.section_id = '$section_id'
+        AND c.subject_id = '$subject_id'
         GROUP BY c.user_id
         ORDER BY avg_score DESC");
 
