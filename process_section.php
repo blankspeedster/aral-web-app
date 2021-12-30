@@ -56,6 +56,8 @@
         FROM class c
         JOIN users u
         ON u.id = c.user_id
+        JOIN section s
+        ON s.id = c.section_id
         WHERE c.section_id = '$section_id'
         AND c.subject_id = '$subject_id'
         GROUP BY c.user_id
@@ -74,6 +76,7 @@
             $scoreBoards = $scoreBoards."".$rank;
             // $scoreBoards = $scoreBoards."\t\t\t".$averageScore["firstname"]." ".$averageScore["lastname"];
             $scoreBoards = $scoreBoards."\t\t\t".$averageScore["firstname"];
+            $scoreBoards = $scoreBoards."\t\t\t".$averageScore["section"];
             $scoreBoards = $scoreBoards."\t\t\t".number_format($averageScore["avg_score"], 0);
             $scoreBoards = $scoreBoards."\n";
         }
