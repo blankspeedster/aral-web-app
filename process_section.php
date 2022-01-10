@@ -1,5 +1,7 @@
 <?php
     include("dbh.php");
+    $currentDateTime = date_default_timezone_set('Asia/Manila');
+    $currentDateTime = date('Y-m-d H:i:s');
 
 
     //Save Section
@@ -118,7 +120,7 @@
         $score = $_GET['score'];
         $subject_id = $_GET['push_color'];
 
-        $mysqli->query("UPDATE class SET score = '$score' WHERE user_id = '$user_id' AND subject_id = '$subject_id' ") or die ($mysqli->error);
+        $mysqli->query("UPDATE class SET score = '$score', date_time = '$currentDateTime' WHERE user_id = '$user_id' AND subject_id = '$subject_id' ") or die ($mysqli->error);
 
         echo "Score for color pushed successfuly!";
     }
@@ -129,7 +131,7 @@
         $score = $_GET['score'];
         $subject_id = $_GET['push_numbers'];
 
-        $mysqli->query("UPDATE class SET score = '$score' WHERE user_id = '$user_id' AND subject_id = '$subject_id' ") or die ($mysqli->error);
+        $mysqli->query("UPDATE class SET score = '$score', date_time = '$currentDateTime' WHERE user_id = '$user_id' AND subject_id = '$subject_id' ") or die ($mysqli->error);
 
         echo "Score for numbers pushed successfuly!";
     }
@@ -140,7 +142,7 @@
         $score = $_GET['score'];
         $subject_id = $_GET['push_alphabets'];
 
-        $mysqli->query("UPDATE class SET score = '$score' WHERE user_id = '$user_id' AND subject_id = '$subject_id' ") or die ($mysqli->error);
+        $mysqli->query("UPDATE class SET score = '$score', date_time = '$currentDateTime' WHERE user_id = '$user_id' AND subject_id = '$subject_id' ") or die ($mysqli->error);
 
         echo "Score for alphabets pushed successfuly!";
     }
@@ -151,7 +153,7 @@
         $score = $_GET['score'];
         $subject_id = $_GET['push_shapes'];
 
-        $mysqli->query("UPDATE class SET score = '$score' WHERE user_id = '$user_id' AND subject_id = '$subject_id' ") or die ($mysqli->error);
+        $mysqli->query("UPDATE class SET score = '$score', date_time = '$currentDateTime' WHERE user_id = '$user_id' AND subject_id = '$subject_id' ") or die ($mysqli->error);
 
         echo "Score for shapes pushed successfuly!";
     }
