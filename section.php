@@ -10,6 +10,17 @@ $_SESSION['getURI'] = $getURI;
 $session_user_id = $_SESSION['user_id'];
 $sections = mysqli_query($mysqli, "SELECT *
     FROM section");
+
+
+//If Edit
+$is_edit = false;
+if(isset($_GET['edit'])){
+    $is_edit = true;
+    $section_id = $_GET['edit'];
+    $edit_section = $mysqli->query(" SELECT * FROM section WHERE id = '$section_id' ") or die ($mysqli->error);
+    $_section = $edit_section->fetch_array();
+}
+
 ?>
 
 <title>ARAL - Section</title>
@@ -89,7 +100,11 @@ $sections = mysqli_query($mysqli, "SELECT *
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Section Name</div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                    <input type="text" class="form-control" name="section" required>
+                                                    <?php if(!$is_edit){ ?>
+                                                    <input type="text" class="form-control" name="section" value="" required>
+                                                    <?php } else { ?>
+                                                    <input type="text" class="form-control" name="section" value="<?php echo $_section["section"]; ?>" required>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -99,9 +114,16 @@ $sections = mysqli_query($mysqli, "SELECT *
                                     <div class="col-xl-12 col-md-6 mb-4">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
+                                                <?php if(!$is_edit){ ?>
                                                 <button type="submit" class="btn btn-primary float-right mr-1" name="save_section" id="save">
                                                     <i class="far fa-save"></i> Create Section
                                                 </button>
+                                                <?php } else { ?>
+                                                <input type="text" class="form-control" name="section_id" value="<?php echo $_section["id"]; ?>" style="visibility: hidden;">
+                                                <button type="submit" class="btn btn-info float-right mr-1" name="update_section" id="save">
+                                                    <i class="far fa-save"></i> Update Section
+                                                </button>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>

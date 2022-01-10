@@ -1,11 +1,26 @@
 <?php
     include("dbh.php");
 
+
+    //Save Section
     if(isset($_POST['save_section'])){
         $section= $_POST['section'];
         $grade = $_POST['grade'];
         
         $mysqli->query(" INSERT INTO section (grade, section) VALUES('$grade','$section') ") or die ($mysqli->error);
+
+        $_SESSION['message'] = "Section: ".$section." Creation Successful!";
+        $_SESSION['msg_type'] = "success";
+        header("location: section.php");
+    }
+
+    //Update Section
+    if(isset($_POST['update_section'])){
+        $section_id =  $_POST['section_id'];
+        $section= $_POST['section'];
+        $grade = $_POST['grade'];
+
+        $mysqli->query(" UPDATE section SET grade = '$grade', section = '$section' WHERE id = '$section_id' ") or die ($mysqli->error);
 
         $_SESSION['message'] = "Section: ".$section." Creation Successful!";
         $_SESSION['msg_type'] = "success";
@@ -35,6 +50,18 @@
         $_SESSION['msg_type'] = "success";
         header("location: class.php?section=".$section_id);
     }
+
+    //Delete Section
+    if(isset($_GET['delete'])){
+        $section_id = $_GET['delete'];
+
+        $mysqli->query(" DELETE FROM section WHERE id = '$section_id' ") or die ($mysqli->error);
+        $_SESSION['message'] = "Section has been deleted!";
+        $_SESSION['msg_type'] = "danger";
+        header("location: section.php");
+
+    }
+
 
     if(isset($_GET['publish_score'])){
         $user_id = $_GET['user_id'];
