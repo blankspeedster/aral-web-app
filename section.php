@@ -71,10 +71,10 @@ $sections = mysqli_query($mysqli, "SELECT *
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Grade Level</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800" name="grade">
-                                                <select class="form-control">
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800" >
+                                                <select class="form-control" name="grade">
                                                     <option selected value="0">Kindergarten</option>
-                                                    <option selected value="-1">Prepatory</option>
+                                                    <option value="-1">Prepatory</option>
                                                 </select>
                                                     <!-- <input type="number" min="1" max="12" class="form-control" name="grade" required> -->
                                                 </div>
